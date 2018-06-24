@@ -9,7 +9,7 @@ Addict is a drop-in REST API microservice for Active Directory implementations. 
 Doing this:
 
 ```bash
-npm i addict-api -g
+npm i addict -g
 addict --url ldaps://[address] --user [user]@[domain] --pass [pass]
 ```
 
@@ -35,6 +35,7 @@ Made with <3 by [dthree](https://github.com/dthree).
 GET /user
 POST /user
 GET /user/:user
+PUT /user/:user
 GET /user/:user/exists
 GET /user/:user/member-of/:group
 POST /user/:user/authenticate
@@ -53,6 +54,7 @@ GET /group
 POST /group
 GET /group/:group
 GET /group/:group/exists
+GET /group/:group/members
 POST /group/:group/user/:user
 DELETE /group/:group/user/:user
 DELETE /group/:group
@@ -135,8 +137,9 @@ Add `_start` and `_end` or `_limit`:
 You can pass the AD details at runtime:
 
 ```bash
-addict --url ldaps://[address] --user [user]@[domain] --pass [pass]
+addict --url ldaps://[address] --user [user]@[domain] --pass [pass] --port [port]
 ```
+`Port` is optional and defaults to `3000`.
 
 As environmental variables:
 
@@ -144,6 +147,7 @@ As environmental variables:
 export ADDICT_URL=ldaps://[address]
 export ADDICT_USER=[user]@[domain]
 export ADDICT_PASS=[pass]
+export ADDICT_PORT=[port] # optional
 ```
 
 You can [run it from docker as well](https://hub.docker.com/r/dthree/addict/), using environmental variables.
@@ -162,7 +166,8 @@ vim ./config.json
   ...
   "user": "[user]@[domain]",
   "pass": "[pass]",
-  "url": "ldaps://[address]"
+  "url": "ldaps://[address]",
+  "port": 3000
 }
 ```
 

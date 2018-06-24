@@ -1,6 +1,6 @@
 {
   "name": "addict",
-  "version": "1.0.3",
+  "version": "1.1.1",
   "description": "Get a full Active Directory REST API in 30 seconds",
   "main": "index.js",
   "keywords": [
@@ -23,11 +23,19 @@
     "addict-cli": "./bin/index.js"
   },
   "dependencies": {
-    "ad": "^0.2.3",
-    "express": "^4.15.3",
+    "ad": "^0.3.1",
     "body-parser": "^1.17.2",
+    "express": "^4.15.3",
     "node-ssha256": "^0.1.1",
     "swagpi": "^0.1.0",
     "vorpal": "^1.12.0"
+  },
+  "devDependencies": {
+    "husky": "^0.14.3",
+    "lint-staged": "^4.0.2",
+    "prettier": "^1.5.3"
+  },
+  "scripts": {
+    "precommit": "lint-staged"
   }
 }
