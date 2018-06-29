@@ -11,11 +11,13 @@ module.exports = args => {
   config.pass = process.env.ADDICT_PASS || config.pass;
   config.url = process.env.ADDICT_URL || config.url;
   config.port = process.env.ADDICT_PORT || config.port;
+  config.cors = process.env.ADDICT_CORS || config.cors;
 
   config.user = args.options.user || config.user;
   config.pass = args.options.pass || config.pass;
   config.url = args.options.url || config.url;
   config.port = args.options.port || config.port;
+  config.cors = args.options.cors || config.cors;
 
   const missing = [];
   if (!config.user) {
