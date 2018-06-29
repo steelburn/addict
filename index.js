@@ -64,6 +64,7 @@ vorpal
   .option('-p, --pass [pass]', 'Domain admin password.')
   .option('--url [url]', 'URL for Active Directory.')
   .option('--port [port]', 'Port to listen on.')
+  .option('--cors [allowed-origin]', 'CORS allowed-origin URL (use * to allow from everywhere).')
   .action(function(args, cbk) {
     init(args);
     cbk();
