@@ -5,5 +5,5 @@ ENV SRC_URL https://github.com/steelburn/addict.git
 EXPOSE 3000
 ENTRYPOINT [ "/usr/local/bin/addict" ]
 
-RUN npm install $SRC_URL -g \
+RUN apk add git && npm install $SRC_URL -g \
         && npm cache clear --force
