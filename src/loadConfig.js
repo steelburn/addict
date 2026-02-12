@@ -25,6 +25,9 @@ module.exports = args => {
   config.port = args.options.port || config.port;
   config.cors = args.options.cors || config.cors;
 
+  // Environment identifier: supports ADDICT_ENV or NODE_ENV, default to 'development'
+  config.env = process.env.ADDICT_ENV || process.env.NODE_ENV || config.env || 'development';
+
   // Initialize 'missing' array to store missing configuration properties
   const missing = [];
 

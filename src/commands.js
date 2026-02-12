@@ -3,6 +3,7 @@
 
 // Initializing an empty 'chalk' variable to be assigned the Vorpal chalk instance later.
 let chalk;
+const logger = require('./logger');
 
 // The 'formatJSON' function takes a JSON object as input and returns a formatted string.
 // It's used to make the console output more readable.
@@ -36,10 +37,10 @@ module.exports = function(vorpal, { ad }) {
       .user(args.user)
       .get()
       .then(user => {
-        return this.log(formatJSON(user));
+        return logger.logContext(this, formatJSON(user));
       })
       .catch(err => {
-        this.log(err);
+        logger.logContext(this, err);
       });
   });
 };

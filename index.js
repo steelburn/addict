@@ -12,6 +12,7 @@ const routes = require('./src/routes'); // Define application routes
 const commands = require('./src/commands'); // Define CLI commands
 const middleware = require('./middleware'); // Middleware functions
 const chalk = vorpal.chalk; // Terminal string styling
+const logger = require('./src/logger');
 
 // Initialize Express app
 const app = express();
@@ -55,12 +56,10 @@ const init = args => {
     vorpal.use(commands, { ad });
 
     // Display a success message
-    vorpal.log(
-      `Addict Active Directory API\nListening on port ${config.port || 3000}`
-    );
+    logger.logVorpal(vorpal, `Addict Active Directory API\nListening on port ${config.port || 3000}`);
   } catch (err) {
     // Display an error message and exit the process
-    vorpal.log(err.message);
+    logger.logVorpal(vorpal, err);
     process.exit();
   }
 };

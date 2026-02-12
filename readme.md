@@ -188,3 +188,22 @@ If you connect to Active Directory over plain LDAP, it will refuse certain write
 
 MIT
 
+## Environment & Logging
+
+- **Environment selection**: Addict reads the runtime environment from the `ADDICT_ENV` environment variable (preferred) or `NODE_ENV`. If neither is set the app runs in `development` mode.
+- **Config exposure**: The loaded environment is available on the runtime `config.env` value created by `src/loadConfig.js`.
+- **Production safety**: When the environment is `production` the application redacts common sensitive values (e.g. `pass`, `password`, `secret`, `token`) from logged objects and masks inline secrets in error messages and strings.
+- **Logger**: See `src/logger.js` for the simple redaction logic used by the CLI and command logging.
+
+Examples
+
+Run in development (no redaction):
+```bash
+NODE_ENV=development node ./index.js
+```
+
+Run in production (redaction active):
+```bash
+ADDICT_ENV=production node ./index.js
+```
+
